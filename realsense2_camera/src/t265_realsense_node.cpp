@@ -30,6 +30,26 @@ void T265RealsenseNode::initializeOdometryInput()
     }
     _parameters_names.push_back(param_name);
 
+    std::string param_name_enable_mapping("tm2_enable_mapping");
+    bool enable_mapping = _parameters->setParam<bool>(param_name_enable_mapping, false);
+    _parameters_names.push_back(param_name_enable_mapping);
+    ROS_INFO_STREAM("tm2_enable_mapping is set to:" << enable_mapping);
+
+    std::string param_name_enable_reloc("tm2_enable_reloc");
+    bool enable_reloc = _parameters->setParam<bool>(param_name_enable_reloc, false);
+    _parameters_names.push_back(param_name_enable_reloc);
+    ROS_INFO_STREAM("tm2_enable_reloc is set to:" << enable_reloc);
+    
+    std::string param_name_enable_jump_pose("tm2_enable_jump_pose");
+    bool enable_jump_pose = _parameters->setParam<bool>(param_name_enable_jump_pose, false);
+    _parameters_names.push_back(param_name_enable_jump_pose);
+    ROS_INFO_STREAM("tm2_enable_jump_pose is set to:" << enable_jump_pose);
+
+    std::string param_name_enable_preservation("tm2_enable_preservation");
+    bool enable_preservation = _parameters->setParam<bool>(param_name_enable_preservation, false);
+    _parameters_names.push_back(param_name_enable_preservation);
+    ROS_INFO_STREAM("tm2_enable_preservation is set to:" << enable_preservation);
+
     std::ifstream calibrationFile(calib_odom_file);
     if (!calibrationFile)
     {
